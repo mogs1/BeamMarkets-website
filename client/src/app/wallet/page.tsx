@@ -2,9 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import TransactionHistory from './transactionHistory/page';
+import sideMenu from '../../../public/assets/sideMenu.png'
 
 interface Transaction {
   id: string;
@@ -77,6 +79,12 @@ const Wallet: React.FC = () => {
   };
 
   return (
+    <div className='flex'>
+    <Image 
+      src={sideMenu}
+      alt='side-menu-image'
+      className='h-screen'
+      />
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-8">Wallet</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -103,13 +111,13 @@ const Wallet: React.FC = () => {
           <div className="mt-8 grid grid-cols-2 gap-4">
             <button
               onClick={handleAddFunds}
-              className="bg-yellow-500 hover:bg-yellow-600 text-black py-2 px-4 rounded-md font-medium w-full"
+              className="bg-yellow-500 hover:bg-yellow-600 text-black py-2 px-4 rounded-md cursor-pointer font-medium w-full"
             >
               Add Funds
             </button>
             <button
               onClick={handleWithdrawal}
-              className="bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded-md font-medium w-full"
+              className="bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded-md cursor-pointer font-medium w-full"
             >
               Withdrawal
             </button>
@@ -141,6 +149,7 @@ const Wallet: React.FC = () => {
           <TransactionHistory />
         </div>
       </div>
+    </div>
     </div>
   );
 };
